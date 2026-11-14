@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0a0d14;
+  color: #e2e8f0;
+  width: 360px;
+  min-height: 200px;
+}
+
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1e2535;
+}
+
+.header-icon {
+  font-size: 26px;
+  filter: drop-shadow(0 0 6px rgba(59,130,246,0.5));
+}
+
+.header h1 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 0.3px;
+}
+
+.header-sub {
+  font-size: 10px;
+  color: #3b82f6;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ── Site info ── */
+.site-info {
+  background: #111827;
+  border: 1px solid #1e2535;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.site-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.site-domain {
+  font-size: 12px;
+  font-weight: 600;
+  color: #7dd3fc;
+  word-break: break-all;
+  text-align: right;
+}
+
+/* ── Scan button ── */
+.scan-btn {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(59,130,246,0.3);
+}
+
+.scan-btn:hover {
+  opacity: 0.92;
+  box-shadow: 0 4px 20px rgba(59,130,246,0.5);
+}
+
+.scan-btn:active {
+  transform: scale(0.98);
+}
+
+.scan-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ── Result card ── */
+.result-card {
+  background: #111827;
+  border: 1px solid #1e2535;
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Status badge ── */
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.safe {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #22c55e;
+}
+
+.status-badge.suspicious {
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.35);
+  color: #fb923c;
+}
+
+.status-badge.phishing {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+  animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+  50%       { box-shadow: 0 0 0 4px rgba(239,68,68,0.15); }
+}
+
+.status-icon { font-size: 22px; }
+
+/* ── Risk meter ── */
+.risk-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.risk-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.risk-value {
+  font-weight: 700;
+  color: #e2e8f0;
+  font-size: 12px;
+}
+
+.risk-bar-bg {
+  background: #0a0d14;
+  border-radius: 4px;
+  height: 7px;
+  overflow: hidden;
+  border: 1px solid #1e2535;
+}
+
+.risk-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 0%;
+}
+
+.risk-bar-fill.safe       { background: linear-gradient(90deg, #16a34a, #22c55e); }
+.risk-bar-fill.suspicious { background: linear-gradient(90deg, #d97706, #fb923c); }
+.risk-bar-fill.phishing   { background: linear-gradient(90deg, #b91c1c, #ef4444); }
+
+/* ── Message ── */
+.result-message {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+/* ── Reasons box ── */
+.reasons-box {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.reasons-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #7dd3fc;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+.reasons-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reasons-list li {
+  font-size: 11px;
+  color: #94a3b8;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.reasons-list li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+/* ── Warning box ── */
+.warning-box {
+  background: rgba(239, 68, 68, 0.07);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.warning-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ef4444;
+  margin-bottom: 6px;
+}
+
+.warning-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.warning-list li {
+  font-size: 11px;
+  color: #fca5a5;
+  padding-left: 12px;
+  position: relative;
+}
+
+.warning-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ef4444;
+}
+
+/* ── Recommendation ── */
+.recommendation {
+  font-size: 11px;
+  color: #64748b;
+  padding: 8px 10px;
+  background: #0a0d14;
+  border-radius: 6px;
+  border-left: 3px solid #1e3a5f;
+  line-height: 1.5;
+}
+
+/* ── Error card ── */
+.error-card {
+  background: #111827;
+  border: 1px solid #1e2535;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.error-icon { font-size: 24px; }
+
+.error-message {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.retry-btn {
+  background: #1e2535;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 7px 18px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.retry-btn:hover { background: #263044; }
+
+/* ── Loading card ── */
+.loading-card {
+  background: #111827;
+  border: 1px solid #1e2535;
+  border-radius: 12px;
+  padding: 28px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #1e2535;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.hidden { display: none !important; }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phishing Detector</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+
+    <header class="header">
+      <div class="header-icon">🛡️</div>
+      <div class="header-text">
+        <h1>Phishing Detector</h1>
+        <p class="header-sub">ML-Powered URL Security</p>
+      </div>
+    </header>
+
+    <div class="site-info">
+      <span class="site-label">Current Site</span>
+      <span class="site-domain" id="siteDomain">Loading...</span>
+    </div>
+
+    <button class="scan-btn" id="scanBtn">
+      <span id="scanBtnText">🔍 Scan This Website</span>
+    </button>
+
+    <div class="result-card hidden" id="resultCard">
+
+      <div class="status-badge" id="statusBadge">
+        <span class="status-icon" id="statusIcon"></span>
+        <span class="status-text" id="statusText"></span>
+      </div>
+
+      <div class="risk-section">
+        <div class="risk-label-row">
+          <span>Risk Score</span>
+          <span class="risk-value" id="riskValue">0%</span>
+        </div>
+        <div class="risk-bar-bg">
+          <div class="risk-bar-fill" id="riskBarFill"></div>
+        </div>
+      </div>
+
+      <p class="result-message" id="resultMessage"></p>
+
+      <div class="reasons-box hidden" id="reasonsBox">
+        <div class="reasons-title">🔎 Detected Issues</div>
+        <ul class="reasons-list" id="reasonsList"></ul>
+      </div>
+
+      <div class="warning-box hidden" id="warningBox">
+        <div class="warning-title">⚠️ Security Warning</div>
+        <ul class="warning-list">
+          <li>Do NOT enter passwords or PINs</li>
+          <li>Do NOT enter OTPs or verification codes</li>
+          <li>Do NOT enter banking or card details</li>
+          <li>Do NOT share personal information</li>
+        </ul>
+      </div>
+
+      <div class="recommendation" id="recommendation"></div>
+
+    </div>
+
+    <div class="error-card hidden" id="errorCard">
+      <span class="error-icon">⚠️</span>
+      <p class="error-message" id="errorMessage"></p>
+      <button class="retry-btn" id="retryBtn">Try Again</button>
+    </div>
+
+    <div class="loading-card hidden" id="loadingCard">
+      <div class="spinner"></div>
+      <p>Analyzing URL...</p>
+    </div>
+
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

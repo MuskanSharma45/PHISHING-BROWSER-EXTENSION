@@ -1,0 +1,21 @@
+# Virtual environment
+PhishingWebsiteDetector/.venv/
+.venv/
+
+# Trained model (auto-generated)
+PhishingWebsiteDetector/backend/model/phishing_model.pkl
+PhishingWebsiteDetector/backend/model/model_meta.json
+
+# Datasets (too large for GitHub)
+dataset_phishing.csv
+PhishingWebsiteDetector/ml/dataset_phishing.csv
+PhishingWebsiteDetector/ml/cleaned_dataset.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db

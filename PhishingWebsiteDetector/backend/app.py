@@ -57,11 +57,29 @@ WHITELIST = {
     # Others
     "cloudflare.com", "aws.amazon.com", "twitch.tv", "discord.com",
     "figma.com", "canva.com", "wordpress.com", "blogger.com",
+    # Test/demo domains
+    "example.com", "example.org", "example.net", "test.com", "localhost",
+    # Education domains (.edu sites)
+    "kent.edu", "mit.edu", "stanford.edu", "harvard.edu", "berkeley.edu",
+    "cmu.edu", "iit.ac.in", "iitb.ac.in", "iitd.ac.in", "du.ac.in",
+    "amity.edu", "vit.ac.in", "bits-pilani.ac.in", "nptel.ac.in",
+    # Government domains
+    "gov.in", "nic.in", "india.gov.in", "mca.gov.in", "incometax.gov.in",
 }
 
 app    = Flask(__name__)
 CORS(app)
 _model = None
+
+
+TRUSTED_TLDS = {"edu", "gov", "ac.in", "gov.in", "mil", "ac.uk", "edu.in"}
+
+
+def is_trusted_tld(hostname: str) -> bool:
+    for tld in TRUSTED_TLDS:
+        if hostname.endswith("." + tld) or hostname == tld:
+            return True
+    return False
 
 
 def load_model():
@@ -129,7 +147,7 @@ def predict():
     parsed   = urlparse(url)
     hostname = (parsed.hostname or "").lower()
     root     = get_root_domain(hostname)
-    if root in WHITELIST:
+    if root in WHITELIST or is_trusted_tld(hostname):
         return jsonify({
             "prediction":     "safe",
             "risk_score":     5.0,

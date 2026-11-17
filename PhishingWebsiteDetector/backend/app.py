@@ -57,6 +57,11 @@ WHITELIST = {
     # Others
     "cloudflare.com", "aws.amazon.com", "twitch.tv", "discord.com",
     "figma.com", "canva.com", "wordpress.com", "blogger.com",
+    # AI tools
+    "chatgpt.com", "openai.com", "claude.ai", "anthropic.com",
+    "gemini.google.com", "copilot.microsoft.com", "perplexity.ai",
+    "aistudio.google.com", "huggingface.co", "replicate.com",
+    "mistral.ai", "cohere.com", "groq.com",
     # Test/demo domains
     "example.com", "example.org", "example.net", "test.com", "localhost",
     # Education domains (.edu sites)

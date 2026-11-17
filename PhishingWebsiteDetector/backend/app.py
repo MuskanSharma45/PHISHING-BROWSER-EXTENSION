@@ -19,8 +19,8 @@ MODEL_PATH = Path(__file__).parent / "model" / "phishing_model.pkl"
 META_PATH  = Path(__file__).parent / "model" / "model_meta.json"
 
 # Risk thresholds (phishing probability %)
-THRESHOLD_SAFE       = 35
-THRESHOLD_SUSPICIOUS = 65
+THRESHOLD_SAFE       = 50
+THRESHOLD_SUSPICIOUS = 75
 
 MESSAGES = {
     "safe":       "No major suspicious URL patterns were detected.",
@@ -40,6 +40,23 @@ WHITELIST = {
     "bing.com", "dropbox.com", "spotify.com", "adobe.com", "zoom.us",
     "slack.com", "notion.so", "medium.com", "paypal.com", "stripe.com",
     "shopify.com", "ebay.com", "whatsapp.com", "telegram.org",
+    # Indian & common sites
+    "flipkart.com", "myntra.com", "swiggy.com", "zomato.com", "paytm.com",
+    "phonepe.com", "gpay.com", "naukri.com", "irctc.co.in", "sbi.co.in",
+    "hdfcbank.com", "icicibank.com", "axisbank.com", "kotak.com",
+    "canara.bank", "pnbindia.in", "upi.com", "npci.org.in",
+    # Dev & education
+    "geeksforgeeks.org", "w3schools.com", "coursera.org", "udemy.com",
+    "leetcode.com", "hackerrank.com", "kaggle.com", "npmjs.com",
+    "pypi.org", "docs.python.org", "developer.mozilla.org",
+    # Google subservices
+    "gmail.com", "drive.google.com", "docs.google.com", "maps.google.com",
+    "play.google.com", "cloud.google.com",
+    # Microsoft
+    "office.com", "live.com", "outlook.com", "azure.com", "visualstudio.com",
+    # Others
+    "cloudflare.com", "aws.amazon.com", "twitch.tv", "discord.com",
+    "figma.com", "canva.com", "wordpress.com", "blogger.com",
 }
 
 app    = Flask(__name__)

@@ -36,6 +36,11 @@ if not exist "%VENV_DIR%\Scripts\activate.bat" (
     echo [OK] Virtual environment already exists.
 )
 
+:: Kill any existing Flask server on port 5000
+echo [STEP] Stopping any existing server on port 5000...
+for /f "tokens=5" %%a in ('netstat -ano ^| findstr :5000 ^| findstr LISTENING 2^>nul') do taskkill /F /PID %%a >nul 2>&1
+echo [OK] Port 5000 is free.
+
 :: Activate venv
 call "%VENV_DIR%\Scripts\activate.bat"
 
